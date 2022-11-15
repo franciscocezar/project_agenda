@@ -1,11 +1,9 @@
-from modulos import *
 from funcs import Funcs
+from modulos import *
+from second_window import SearchData
 
-customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("dark-blue")  # Themes: "dark-blue" (standard), "green", "dark-blue"
 
-
-class App(customtkinter.CTk, Funcs):
+class App(customtkinter.CTk, Funcs, SearchData):
     WIDTH = 620
     HEIGHT = 400
 
@@ -19,19 +17,6 @@ class App(customtkinter.CTk, Funcs):
         self.frames()
         self.widgets()
         self.create_tables()
-
-    def center(self):
-        APP_WIDTH = 620
-        APP_HEIGHT = 400
-
-        screen_width = self.winfo_screenwidth()
-        screen_height = self.winfo_screenheight()
-
-        app_center_coordinate_x = (screen_width / 2) - (APP_WIDTH / 2)
-        app_center_coordinate_y = (screen_height / 2) - (APP_HEIGHT / 2)
-
-        # Position App to the Centre of the Screen
-        self.geometry(f"{APP_WIDTH}x{APP_HEIGHT}+{int(app_center_coordinate_x)}+{int(app_center_coordinate_y)}")
 
     def frames(self):
         self.frame_1 = customtkinter.CTkFrame(master=self,
@@ -72,14 +57,14 @@ class App(customtkinter.CTk, Funcs):
 
         self.list_button = customtkinter.CTkButton(master=self.frame_1,
                                                    text="Ver Lista",
-                                                   border_width=1,  # <- custom border_width
-                                                   fg_color=None,  # <- no fg_color
+                                                   border_width=1,
+                                                   fg_color=None,
                                                    command=self.new_window
                                                    )
         self.list_button.place(relx=0.51, rely=0.55, relwidth=0.24)
 
-        self.label_mode = customtkinter.CTkLabel(master=self.frame_1, text="Appearance Mode:")
-        self.label_mode.place(relx=0.01, rely=0.82)
+        self.label_mode = customtkinter.CTkLabel(master=self.frame_1, text="Tema:")
+        self.label_mode.place(relx=0.18, rely=0.857, anchor=tkinter.E)
 
         self.optionmenu_1 = customtkinter.CTkOptionMenu(master=self.frame_1,
                                                         values=["System", "Light", "Dark"],
