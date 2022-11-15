@@ -7,7 +7,6 @@ class Funcs:
         self.name_entry.delete(0, tkinter.END)
         self.vehicle_license_plate_entry.delete(0, tkinter.END)
         self.house_name_entry.delete(0, tkinter.END)
-        self.search_entry.delete(0, tkinter.END)
 
     def connect_db(self):
         # Creates and connects to the database.
@@ -188,5 +187,5 @@ class Funcs:
         for i in searched_data:
             self.database_data_list.insert('', tkinter.END, values=i)
 
-        self.cleans_entries()
         self.disconnect_db()
+        self.search_entry.delete(0, tkinter.END)
