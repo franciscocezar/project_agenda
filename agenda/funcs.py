@@ -50,20 +50,17 @@ class Funcs:
         print('Database table created.')
         self.disconnect_db()
 
-    def save_button_func(self):
+    def create_data(self):
         # Saves the data entered in the Entries to the database.
-
-        self.name = self.name_entry.get().title()
+        name = self.name_entry.get().title()
         plate = self.vehicle_license_plate_entry.get().upper()
-        self.plate = f'{plate[:3]} {plate[3:]}'
         house = self.house_name_entry.get().title()
-        self.house = f'{house[:-2]} ({house[-2:]})'
 
         self.connect_db()
 
         self.cursor.execute(
             """ INSERT INTO proprietarios (nome_proprietario, placa_veiculo, casa) 
-                VALUES (?, ?, ?)""", (self.name, self.plate, self.house),
+                VALUES (?, ?, ?)""", (name, plate, house),
         )
         self.conn.commit()
         self.disconnect_db()
@@ -73,6 +70,7 @@ class Funcs:
         # Muda o tema do programa --> Sistema / Claro / Escuro
         customtkinter.set_appearance_mode(new_appearance_mode)
 
+    # QUERY WINDOW FUNCTIONS ---------------------------------------------------
     def select_list(self):
         # Shows database data on the screen.
 
@@ -82,39 +80,40 @@ class Funcs:
         # Connect to database and gets data
         self.connect_db()
         data_list = self.cursor.execute(
-            """ SELECT nome_proprietario, placa_veiculo, casa 
+            """ SELECT *
                 FROM proprietarios
                 ORDER BY nome_proprietario ASC; """
         )
 
         # Gets selected data and shows it on the screen
+
         count = 0
-        for i in data_list:
+        for data in data_list:
             if count % 2 == 0:
                 self.database_data_list.insert(
-                    '', tkinter.END, values=i, iid=count, tag=('evenrow',)
+                    '', tkinter.END, values=(data[1], data[2], data[3], data[0]), iid=count, tag=('evenrow',)
                 )
             else:
                 self.database_data_list.insert(
-                    '', tkinter.END, values=i, iid=count, tag=('oddrow',)
+                    '', tkinter.END, values=(data[1], data[2], data[3], data[0]), iid=count, tag=('oddrow',)
                 )
             count += 1
 
         self.disconnect_db()
 
-    def search_in_db(self):
+    def read_data(self):
         self.connect_db()
         self.database_data_list.delete(*self.database_data_list.get_children())
 
-        self.search = self.search_entry.get()
+        self.query = self.query_entry.get()
 
         self.cursor.execute(
             f"""
                             SELECT nome_proprietario, placa_veiculo, casa 
                             FROM proprietarios
-                            WHERE nome_proprietario LIKE '%{self.search}%' OR 
-                            placa_veiculo LIKE '%{self.search}%' OR 
-                            casa LIKE '%{self.search}%'
+                            WHERE nome_proprietario LIKE '%{self.query}%' OR 
+                            placa_veiculo LIKE '%{self.query}%' OR 
+                            casa LIKE '%{self.query}%'
                             ORDER BY nome_proprietario ASC"""
         )
 
@@ -124,4 +123,59 @@ class Funcs:
             self.database_data_list.insert('', tkinter.END, values=i)
 
         self.disconnect_db()
-        self.search_entry.delete(0, tkinter.END)
+        self.query_entry.delete(0, tkinter.END)
+
+    def OnDoubleClick(self, event):
+        self.reconfigure_frame()
+        # Função Duplo Clique na lista mostrada na tela.
+
+        # Seleciona o item clicado e os insere de volta nos campos Entry.
+        for n in self.database_data_list.selection():
+            # Desempacota a lista.
+            col1, col2, col3, col4 = self.database_data_list.item(n, 'values')
+            # Insere cada item em sua respectiva variável entry.
+            self.qrname_entry.insert(tkinter.END, col1)
+            self.qrvehicle_license_plate_entry.insert(tkinter.END, col2)
+            self.qrhouse_name_entry.insert(tkinter.END, col3)
+            self.id_entry.insert(tkinter.END, col4)
+
+    def update_data(self):
+        name = self.qrname_entry.get().title()
+        plate = self.qrvehicle_license_plate_entry.get().upper()
+        house = self.qrhouse_name_entry.get().title()
+        id = self.id_entry.get()
+
+        self.connect_db()
+        self.cursor.execute("""
+                        UPDATE proprietarios
+                        SET nome_proprietario = ?, placa_veiculo = ?, casa = ?
+                        WHERE id = ? """, (name, plate, house, id))
+
+        self.conn.commit()
+        self.disconnect_db()
+        self.select_list()
+        self.cleans_entries()
+
+        for widgets in self.frame_query_button.winfo_children():
+            widgets.destroy()
+
+        self.widgets2()
+
+    def delete_data(self):
+        id = self.id_entry.get()
+        msg = messagebox.askyesno(title="Aviso", message="Tem certeza de que deseja apagar?", icon='warning')
+        if msg:
+            self.connect_db()
+
+            self.cursor.execute(""" DELETE FROM proprietarios WHERE id = ? """, (id,))
+            self.conn.commit()
+
+            self.disconnect_db()
+            self.select_list()
+            self.cleans_entries()
+
+            for widgets in self.frame_query_button.winfo_children():
+                widgets.destroy()
+
+            self.widgets2()
+

@@ -1,9 +1,9 @@
 from funcs import Funcs
 from modulos import *
-from second_window import SearchData
+from query_window import QueryData
 
 
-class App(customtkinter.CTk, Funcs, SearchData):
+class App(customtkinter.CTk, Funcs, QueryData):
     WIDTH = 620
     HEIGHT = 400
 
@@ -51,7 +51,7 @@ class App(customtkinter.CTk, Funcs, SearchData):
                                                    text="Salvar",
                                                    border_width=1,
                                                    fg_color=None,
-                                                   command=self.save_button_func
+                                                   command=self.create_data
                                                    )
         self.save_button.place(relx=0.25, rely=0.55, relwidth=0.24)
 
