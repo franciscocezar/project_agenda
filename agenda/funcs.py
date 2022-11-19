@@ -109,12 +109,13 @@ class Funcs:
 
         self.cursor.execute(
             f"""
-                            SELECT nome_proprietario, placa_veiculo, casa 
+                            SELECT nome_proprietario, placa_veiculo, casa, rowid
                             FROM proprietarios
                             WHERE nome_proprietario LIKE '%{self.query}%' OR 
                             placa_veiculo LIKE '%{self.query}%' OR 
-                            casa LIKE '%{self.query}%'
-                            ORDER BY nome_proprietario ASC"""
+                            casa LIKE '%{self.query}%' OR
+                            rowid LIKE '%%{self.query}'
+                            ORDER BY nome_proprietario ASC;"""
         )
 
         searched_data = self.cursor.fetchall()
@@ -178,4 +179,3 @@ class Funcs:
                 widgets.destroy()
 
             self.widgets2()
-
