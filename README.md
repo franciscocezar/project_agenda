@@ -1,3 +1,4 @@
+[![GitHub](https://img.shields.io/github/license/franciscocezar/project_agenda)](https://github.com/franciscocezar/project_agenda/blob/main/LICENSE)
 # Agenda para portaria de condomínios
 ### Objetivo: Facilitar a busca por algumas informações de proprietários do condomínio 
 
