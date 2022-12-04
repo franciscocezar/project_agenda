@@ -1,7 +1,8 @@
 [![GitHub](https://img.shields.io/github/license/franciscocezar/project_agenda)](https://github.com/franciscocezar/project_agenda/blob/main/LICENSE)
-# Agenda para portaria de condomínios
-### Objetivo: Facilitar a busca por algumas informações de proprietários do condomínio 
+# Condominium Agenda
+### Objective: Facilitate the search for some condominium owners' information.
 
+I built this simple project in order to practice CRUD, OOP, and to test some new GUI tools like [Customtkinter](https://github.com/TomSchimansky/CustomTkinter). It can easily be changed to become a normal agenda with more functionality.
 
 ![Captura de Tela 2022-11-22 às 16 37 11](https://user-images.githubusercontent.com/102926017/203405752-db2585f6-1cfe-4c76-9335-e776e99dd38b.png)
 ![Captura de Tela 2022-11-22 às 16 31 29](https://user-images.githubusercontent.com/102926017/203404731-eaee9177-ec07-49ac-b1a5-88000a1febdf.png)
@@ -18,17 +19,13 @@
 * [Customtkinter](https://pypi.org/project/customtkinter/0.3/)
 * [SQLite3](https://docs.python.org/3/library/sqlite3.html)
 
-## Requisitos:
+## Requirements:
 
-1.  Tenha o Python 3 instalado no seu computador.
-2. Instale a biblioteca Customtkinter (pip ou pip3 install customtkinter) -- as bibliotecas Tkinter e SQLite3 não precisam ser instaladas.
-4. Rode o programa.
-5. Preencha as informações e clique em salvar.
-6.  Dê duplo clique na informação para editar ou excluir.
+1. You’re going to need Python 3 or more
+2. Install the libraries: Customtkinter (pip or pip3 install customtkinter) -- The libraries Tkinter and SQLite3 do not need to be installed.
+3. Run the code.
+4. Fill in the information and click save.
+5. Double click on the information to edit or delete it.
 
-## Meu objetivo com esse programa é praticar:
-	- Python
-	- POO (programação orientada a objetos)
-	- CRUD (create, read, update, delete a database)
 
 
