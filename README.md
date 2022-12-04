@@ -21,11 +21,11 @@ I built this simple project in order to practice CRUD, OOP, and to test some new
 
 ## Requirements:
 
-1. You’re going to need Python 3 or more
-2. Install the library Customtkinter (pip or pip3 install customtkinter).  
-   - The libraries Tkinter and SQLite3 do not need to be installed.
-4. Run the code.
-5. Fill in the information and click save.
+1. You’re going to need Python 3 or more;
+2. Install the library Customtkinter (pip or pip3 install customtkinter)  
+   - The libraries Tkinter and SQLite3 do not need to be installed;
+4. Run the code;
+5. Fill in the information and click save;
 6. Double click on the information to edit or delete it.
 
 
