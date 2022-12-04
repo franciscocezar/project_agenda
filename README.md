@@ -4,6 +4,7 @@
 
 I built this simple project in order to practice CRUD, OOP, and to test some new GUI tools like [Customtkinter](https://github.com/TomSchimansky/CustomTkinter). It can easily be changed to become a normal agenda with more functionality.
 
+###### *Fictitious data
 ![Captura de Tela 2022-11-22 às 16 37 11](https://user-images.githubusercontent.com/102926017/203405752-db2585f6-1cfe-4c76-9335-e776e99dd38b.png)
 ![Captura de Tela 2022-11-22 às 16 31 29](https://user-images.githubusercontent.com/102926017/203404731-eaee9177-ec07-49ac-b1a5-88000a1febdf.png)
 ![Captura de Tela 2022-11-22 às 16 22 02](https://user-images.githubusercontent.com/102926017/203404101-300080bc-95b6-4faf-99d5-a88a0f45d3d0.png)
