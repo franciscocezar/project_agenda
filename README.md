@@ -12,7 +12,7 @@ I built this simple project in order to practice CRUD, OOP, and to test some new
 ![Captura de Tela 2022-11-22 às 16 42 15](https://user-images.githubusercontent.com/102926017/203406657-5b6a50c2-fcae-414e-86c7-49e52f72d1a3.png)
 ![Captura de Tela 2022-11-22 às 16 33 04](https://user-images.githubusercontent.com/102926017/203405027-123137ac-459d-4009-98d9-18a662bbc028.png)
 
-## Tecnologias utilizadas:
+## Used technologies:
 
 * [Python](https://www.python.org/)
 * [Tkinter](https://docs.python.org/3/library/tkinter.html)
